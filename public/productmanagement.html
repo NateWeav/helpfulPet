@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Management</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="productdisplay.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Helpful Pet</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="signup.html">New Customer Page</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Products<span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h2>Product Management</h2>
+        <form id="productForm">
+            <div class="form-group">
+                <label for="productId">Product ID (required):</label>
+                <input type="text" id="productId" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description (required):</label>
+                <input type="text" id="description" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="category">Category (required):</label>
+                <input type="text" id="category" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="unitOfMeasure">Unit of Measure (required):</label>
+                <input type="text" id="unitOfMeasure" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="price">Price (required):</label>
+                <input type="number" id="price" class="form-control" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="weight">Weight (optional):</label>
+                <input type="number" id="weight" class="form-control" step="0.01">
+            </div>
+            <button type="submit" class="btn btn-primary">Save Product</button>
+            <button type="button" class="btn btn-secondary" id="downloadJsonBtn">Download Product JSON</button>
+        </form>
+
+        <h3 class="mt-4">Product List</h3>
+        <div id="productList"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="productmanagement.js"></script>
+</body>
+</html>

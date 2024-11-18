@@ -1,0 +1,59 @@
+{
+    "products": [
+      {
+        "id": "001",
+        "name": "Chuckit! Ultra Ball",
+        "description": "Durable, high-bounce ball for dogs, perfect for fetching.",
+        "category": "Dog Toys",
+        "sizes": ["Large"],
+        "price": 9.99,
+        "weight": 0.2,
+        "weightUnit": "lbs",
+        "image": "chuckit-ball.png"
+      },
+      {
+        "id": "002",
+        "name": "Comfortable Dog Bed",
+        "description": "Cozy bed with raised sides for extra comfort, suitable for small to medium dogs.",
+        "category": "Dog Beds",
+        "sizes": ["Large"],
+        "price": 49.99,
+        "weight": 4.0,
+        "weightUnit": "lbs",
+        "image": "dog-bed.png"
+      },
+      {
+        "id": "003",
+        "name": "Boston Anti-Pull Harness",
+        "description": "Adjustable anti-pull harness, perfect for training and daily walks.",
+        "category": "Dog Accessories",
+        "sizes": ["Small", "Medium", "Large"],
+        "price": 29.99,
+        "weight": 0.5,
+        "weightUnit": "lbs",
+        "image": "Boston-Anti-Pull-Harness-2-0-Pink-Geo-Camo-1377037832.jpg"
+      },
+      {
+        "id": "004",
+        "name": "Bow Tie Collar",
+        "description": "Stylish bow tie collar for a dapper look, ideal for small dogs.",
+        "category": "Dog Collars",
+        "sizes": ["Small", "Medium", "Large"],
+        "price": 14.99,
+        "weight": 0.1,
+        "weightUnit": "lbs",
+        "image": "bowcollar.jpg"
+      },
+      {
+        "id": "005",
+        "name": "Flower Design Collar",
+        "description": "Vibrant flower design collar for a cute and elegant look.",
+        "category": "Dog Collars",
+        "sizes": ["Small", "Medium", "Large"],
+        "price": 16.99,
+        "weight": 0.1,
+        "weightUnit": "lbs",
+        "image": "flower collar.jpg"
+      }
+    ]
+  }

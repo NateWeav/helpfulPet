@@ -1,0 +1,36 @@
+.card {
+    width: 90%;
+    margin: 20px auto;
+    background-color: #F8F8F8;
+    padding: 20px;
+    border-radius: 3px;
+    border-bottom: 4px solid #7CDDFB;
+}
+
+.card-text, .form-control {
+    margin: 10px 0;
+}
+
+.add-to-cart-btn {
+    background-color: #0047AB;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #89CFF0;
+    cursor: pointer;
+}
+
+.navbar {
+    background-color: #0047AB !important;
+}
+
+.navbar-brand {
+    color: #ffffff !important;
+    font-weight: bold;
+}
