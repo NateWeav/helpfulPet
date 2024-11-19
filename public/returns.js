@@ -1,23 +1,30 @@
 var app = angular.module('returnsApp', []);
 
 app.controller('ReturnsController', function($scope) {
-    // Sample products (usually fetched from a server)
-    $scope.products = [
-        { id: "001", name: "Chuckit! Ultra Ball", price: 9.99 },
-        { id: "002", name: "Comfortable Dog Bed", price: 49.99 },
-        { id: "003", name: "Boston Anti-Pull Harness", price: 29.99 },
-        { id: "004", name: "Bow Tie Collar", price: 14.99 },
-        { id: "005", name: "Flower Design Collar", price: 16.99 }
-    ];
+    $scope.orders = [];
     $scope.returnedProducts = [];
 
-    // Add product to returns list
-    $scope.returnProduct = function(product) {
-        $scope.returnedProducts.push(product);
+    // Fetch orders from the server
+    $.ajax({
+        url: '/orders',
+        type: 'GET',
+        success: function(response) {
+            $scope.$apply(function() {
+                $scope.orders = response;
+            });
+        },
+        error: function(error) {
+            console.error("Error fetching orders:", error);
+        }
+    });
 
-        //Send return details to a server via AJAX
+    // Add product to returns list
+    $scope.returnProduct = function(order, product) {
+        $scope.returnedProducts.push({ orderId: order._id, product });
+
+        // Send return details to the server
         $.ajax({
-            url: 'not-yet',
+            url: '/returns',
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify($scope.returnedProducts),

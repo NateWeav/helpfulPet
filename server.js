@@ -84,12 +84,31 @@ const ReturnSchema = new Schema({
   status: String
 });
 
+const ShippingSchema = new Schema({
+  shopperId: { type: Schema.Types.ObjectId, ref: 'Shopper' },
+  address: String,
+  carrier: String,
+  method: String,
+  createdAt: { type: Date, default: Date.now }
+});
+
+const BillingSchema = new Schema({
+  shopperId: { type: Schema.Types.ObjectId, ref: 'Shopper' },
+  name: String,
+  cardNumber: String,
+  expiryDate: String,
+  cvv: String,
+  createdAt: { type: Date, default: Date.now }
+});
+
 // Models
 const Shopper = mongoose.model('Shopper', ShopperSchema);
 const Product = mongoose.model('Product', ProductSchema);
 const ShoppingCart = mongoose.model('ShoppingCart', ShoppingCartSchema);
 const Order = mongoose.model('Order', OrderSchema);
 const Return = mongoose.model('Return', ReturnSchema);
+const Shipping = mongoose.model('Shipping', ShippingSchema);
+const Billing = mongoose.model('Billing', BillingSchema);
 
 app.use(bodyParser.json());
 
@@ -258,6 +277,58 @@ app.post('/cart/add', async (req, res) => {
       res.status(401).json({ error: 'No active session' });
     }
   });
+
+  app.post('/shipping', async (req, res) => {
+    try {
+        const shopperId = req.session.shopperId;
+        if (!shopperId) {
+            return res.status(401).json({ error: 'Unauthorized' });
+        }
+
+        const { address, carrier, method } = req.body;
+        const shipping = new Shipping({ shopperId, address, carrier, method });
+        await shipping.save();
+        res.status(200).json({ message: 'Shipping details saved' });
+    } catch (err) {
+        res.status(500).json({ error: 'Failed to save shipping details' });
+    }
+});
+
+app.post('/billing', async (req, res) => {
+  try {
+      const shopperId = req.session.shopperId;
+      if (!shopperId) {
+          return res.status(401).json({ error: 'Unauthorized' });
+      }
+
+      const { name, cardNumber, expiryDate, cvv } = req.body;
+      const billingDetails = new Billing({
+          shopperId,
+          name,
+          cardNumber: `**** **** **** ${cardNumber.slice(-4)}`,
+          expiryDate,
+          cvv: '***' // Do not store CVV
+      });
+
+      await billingDetails.save();
+      res.status(200).json({ message: 'Billing details saved' });
+  } catch (err) {
+      res.status(500).json({ error: 'Failed to save billing details' });
+  }
+});
+
+app.get('/orders', async (req, res) => {
+  try {
+      const shopperId = req.session.shopperId;
+      if (!shopperId) {
+          return res.status(401).json({ error: 'Unauthorized' });
+      }
+      const orders = await Order.find({ shopperId }).populate('items.product');
+      res.json(orders);
+  } catch (err) {
+      res.status(500).json({ error: 'Failed to fetch orders' });
+  }
+});
 
 app.listen(3000, () => {
   console.log('Server is running on port 3000');

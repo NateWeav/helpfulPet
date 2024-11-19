@@ -6,10 +6,35 @@
     <!-- Include Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="productdisplay.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
     <!-- Navigation Bar or Header (if any) -->
-
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="primary-header">
+            <a class="navbar-brand" href="#">Helpful Pet</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="signup.html">New Customer Page</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Products<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="returns.html">Returns</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="cart-icon">
+                        <i class="fas fa-shopping-cart"></i> Cart (<span id="cart-count">0</span>)
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <div class="container mt-5">
         <h2 class="mb-4">Available Products</h2>
         <div id="productList" class="row">
@@ -17,11 +42,6 @@
         </div>
     </div>
 
-    <!-- Cart Icon -->
-    <div id="cart-icon" style="position: fixed; top: 20px; right: 20px; cursor: pointer;">
-        <img src="cart-icon.png" alt="Cart">
-        <span id="cart-count" class="badge badge-pill badge-danger">0</span>
-    </div>
 
     <!-- Cart Modal -->
     <div class="modal fade" id="cartModal" tabindex="-1" role="dialog">

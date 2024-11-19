@@ -1,17 +1,16 @@
 var app = angular.module('billingApp', []);
 
 app.controller('BillingController', function($scope) {
-    $scope.billing = {}; // Initialize billing object
-    $scope.submitted = false; // Flag for form submission
+    $scope.billing = {};
+    $scope.submitted = false;
 
-    // Submit billing details
     $scope.submitBillingDetails = function() {
         if ($scope.billing.name && $scope.billing.cardNumber && $scope.billing.expiryDate && $scope.billing.cvv) {
             $scope.submitted = true;
 
-            //Send billing details to a server via AJAX
+            // Send billing details to the server
             $.ajax({
-                url: 'surely-one-day',
+                url: '/billing',
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify($scope.billing),

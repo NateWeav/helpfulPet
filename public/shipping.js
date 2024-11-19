@@ -1,26 +1,25 @@
-// Define AngularJS application and controller
+// shipping.js
+
 var app = angular.module('shippingApp', []);
 
 app.controller('ShippingController', function($scope) {
     $scope.shipping = {}; // Initialize shipping object
-    $scope.submitted = false; // Flag to check if the form was submitted
 
     // Function to handle form submission
     $scope.submitShippingDetails = function() {
         if ($scope.shipping.address && $scope.shipping.carrier && $scope.shipping.method) {
-            // Set submitted to true to display the details
-            $scope.submitted = true;
-
             $.ajax({
-                url: 'notrealyet',
+                url: '/shipping',
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify($scope.shipping),
                 success: function(response) {
-                    // Handle successful response
+                    // Redirect to billing.html upon successful submission
+                    window.location.href = 'billing.html';
                 },
                 error: function(error) {
                     // Handle error
+                    alert('Error saving shipping details.');
                 }
             });
         } else {
