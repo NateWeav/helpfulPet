@@ -1,0 +1,9 @@
+install nodejs and mongodb locally
+
+run "npm i express mongoose body-parser bcrypt express-session" in terminal
+
+run createdb.js (node createdb.js)
+
+run server (node server.js)
+
+navigate to localhost:3000 in browser

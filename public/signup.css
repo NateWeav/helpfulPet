@@ -74,6 +74,11 @@ h4 {
      color: #89CFF0
 }
 
+.mt-3.text-center {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
 
 /* Form styles */
 form {
